@@ -1,18 +1,13 @@
 import module from "./Profile.module.css";
-
+import MyPosts from "./MyPosts/MyPosts";
 const Profile = () => {
   return (
-    <div className={module.content}>
+    <div>
       <div>
         <img src="https://funart.pro/uploads/posts/2021-04/1617391686_8-p-oboi-spokoinii-fon-8.jpg" />
       </div>
       <div>ava + discription</div>
-      <div>
-        My posts
-        <div>New post</div>
-        <div className={module.item}>post 1</div>
-        <div className={module.item}>post 2</div>
-      </div>
+      <MyPosts />
     </div>
   );
 };
