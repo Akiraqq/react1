@@ -1,15 +1,16 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Dialodues from "./components/Dialogues/Dialogues";
-import Header from "./components/Header/Header";
-import Music from "./components/Music/Music";
-import Navbar from "./components/Navbar/Navbar";
-import News from "./components/News/News";
-import Profile from "./components/Profile/Profile";
-import Settings from "./components/Settings/Settings";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Dialodues from './components/Dialogues/Dialogues';
+import Header from './components/Header/Header';
+import Music from './components/Music/Music';
+import Navbar from './components/Navbar/Navbar';
+import News from './components/News/News';
+import Profile from './components/Profile/Profile';
 
-const App = (props) => {
+import Settings from './components/Settings/Settings';
+
+const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
