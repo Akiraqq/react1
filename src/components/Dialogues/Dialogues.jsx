@@ -2,21 +2,31 @@ import React from 'react';
 import module from './Dialogues.module.css';
 import Dialogue from './Dialogue/Dialogue';
 import Message from './Message/Message';
-import state from '../../redux/State';
+import {
+  sendMessageCreator,
+  updateNewMessageBodyCreator,
+} from '../../redux/DialoguesReducer';
+import store from '../../redux/State';
 
 const Dialodues = (props) => {
   const newMessage = React.createRef();
-  const addMessage = () => {
-    let text = newMessage.current.value;
-    alert(text);
+  let onSendMessageClick = () => {
+    store.dispatch(sendMessageCreator());
+  };
+  let newMessageBody = store.getState().newMessageBody;
+  let onNewMessageChange = () => {
+    let body = newMessage.current.value;
+    store.dispatch(updateNewMessageBodyCreator(body));
   };
 
-  const dialoguesElements = state.dialoguesPage.dialogues.map((d) => (
-    <Dialogue name={d.name} id={d.id} />
-  ));
-  const messageElements = state.dialoguesPage.messages.map((m) => (
-    <Message message={m.message} id={m.id} />
-  ));
+  const dialoguesElements = store
+    .getState()
+    .dialoguesPage.dialogues.map((d) => <Dialogue name={d.name} id={d.id} />);
+  const messageElements = store
+    .getState()
+    .dialoguesPage.messages.map((m) => (
+      <Message message={m.message} id={m.id} />
+    ));
   return (
     <div className={module.dialogues}>
       <div className={module.dialoguesItems}>{dialoguesElements}</div>
@@ -24,11 +34,10 @@ const Dialodues = (props) => {
       <div>
         <textarea
           ref={newMessage}
-          className="textarea"
-          cols="70"
-          rows="5"
+          onChange={onNewMessageChange}
+          value={newMessageBody}
         ></textarea>
-        <button onClick={addMessage}>send message</button>
+        <button onClick={onSendMessageClick}>send message</button>
       </div>
     </div>
   );

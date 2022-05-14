@@ -6,7 +6,7 @@ const Profile = (props) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts eddPost={props.addPost} />
+      <MyPosts dispatch={props.dispatch} />
     </div>
   );
 };
